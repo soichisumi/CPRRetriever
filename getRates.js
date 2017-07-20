@@ -44,7 +44,7 @@ function setCodeforcesRate(userId) {
 }
 
 function setTopcoderRate(userId) {
-    $.ajax('http://api.topcoder.com/v2/users/' + userId + '/statistics/data/srm',
+    $.ajax('https://api.topcoder.com/v2/users/' + userId + '/statistics/data/srm',
         {
             type:   'GET',
             dataType: 'json'
