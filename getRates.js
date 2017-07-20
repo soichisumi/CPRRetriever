@@ -1,8 +1,3 @@
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-
 function getHtmlForRate(rate , contest ){
     var thresholds
     var classes
@@ -38,7 +33,7 @@ function setCodeforcesRate(userId) {
     $.ajax('http://codeforces.com/api/user.info',
         {
             type:   'GET',
-            data:   {handles: userId}
+            data:   {handles: userId},
             dataType: 'json'
         }
     ).done(function(data){
@@ -47,7 +42,7 @@ function setCodeforcesRate(userId) {
 }
 
 function setTopcoderRate(userId) {
-    $.ajax('http://api.topcoder.com/v2/users/' + userId + 'statistics/data/srm',
+    $.ajax('http://api.topcoder.com/v2/users/' + userId + '/statistics/data/srm',
         {
             type:   'GET',
             dataType: 'json'
@@ -64,6 +59,9 @@ function setAtcoderRate(userId){
             dataType: 'html'
         }
     ).done(function(data){
-        $('#atc').html($('dd',data).eq(5).text())
+        $('#atc').html($('dd',data).eq(5).text()) //6でmaxRate
     })
 }
+setCodeforcesRate('yousei')
+setAtcoderRate('yoyoyousei')
+setTopcoderRate('camshift')
