@@ -34,11 +34,13 @@ function setCodeforcesRate(userId) {
         {
             type:   'GET',
             data:   {handles: userId},
-            dataType: 'json'
+            dataType: 'jsonp',
+            jsonpCallback: 'parseResponse',
+            success: function(data){
+                $('#cdf').html(getHtmlForRate(data.result[0].rating))
+            }
         }
-    ).done(function(data){
-        $('#cdf').html(getHtmlForRate(data.result[0].rating))
-    })
+    )
 }
 
 function setTopcoderRate(userId) {
